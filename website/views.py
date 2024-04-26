@@ -22,10 +22,14 @@ db_connection_string = 'mysql+pymysql://wcwt5:Tax1234!@localhost:3306/wcwt5db'
 dbengine = create_engine(db_connection_string)
  
 # Reflect the existing database tables
+#Reflection is the process of reading the database schema and
+# populating SQLAlchemy's metadata with information about tables, columns, and relationships.
 metadata = MetaData()
 metadata.reflect(dbengine)
 
 # Prepare the Base class for reflection
+# automap_base function provided by SQLAlchemy that creates a new base
+# class f definitions based on an existing database schema.
 Base = automap_base(metadata=metadata)
 Base.prepare()
 
