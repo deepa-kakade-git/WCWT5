@@ -1,0 +1,205 @@
+{% extends "base.html" %} {% block title %}Form WCWT-5 APPLICATION FORM FOR REFUND OF WILMINGTON CITY WAGE TAX{% endblock %} {% block
+content %}
+<form method="POST">
+  <h3 align="center">SECTION 1 - BACKGROUND INFORMATION</h3>
+  <div class="form-group">
+        <label for="TaxYear">Select Tax Year for refund:</label>
+        <select id="TaxYear" name="TaxYear">
+            {% for year in years %}
+                <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+        </select>
+  </div>
+  <br />
+  <hr>
+  <br />
+  <div class="form-group">
+    <label for="FirstName">First Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="FirstName"
+      name="FirstName"
+      placeholder="First name"
+    />
+    <label for="MiddleInitial">Middle Initial</label>
+    <input
+      type="text"
+      class="form-control"
+      id="MiddleInitial"
+      name="MiddleInitial"
+      placeholder="Middle Initial"
+      maxlength="1"
+      size="1"
+    />
+    <label for="LastName">Last Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="LastName"
+      name="LastName"
+      placeholder="Last Name"
+    />
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="Address">Address ( Apt,Name&Number or Street Number&Street name )</label>
+    <input
+      type="text"
+      class="form-control"
+      id="Address"
+      name="Address"
+      placeholder="Address"
+    />
+    <label for="City">City</label>
+    <input
+      type="text"
+      class="form-control"
+      id="City"
+      name="City"
+      placeholder="City"
+    />
+    <label for="State">State</label>
+    <input
+      type="text"
+      class="form-control"
+      id="State"
+      name="State"
+      placeholder="State"
+      size="2"
+    />
+    <label for="Zipcode">Zip Code (5 or 9 digits only)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="Zipcode"
+      name="Zipcode"
+      placeholder="Zipcode"
+      size="10"
+    />
+    <label for="TelNo">Tel. No (10 digits)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="TelNo"
+      name="TelNo"
+      placeholder="TelNo"
+      size="10"
+    />
+  </div>
+  <hr>
+  <div class="form-group">
+    <label for="CurrEmployerNm">Present Employer Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="CurrEmployerNm"
+      name="CurrEmployerNm"
+      placeholder="Current Employer Name"
+    />
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="CurrEmployerAddress">Address ( Apt,Name&Number or Street Number&Street name )</label>
+    <input
+      type="text"
+      class="form-control"
+      id="CurrEmployerAddress"
+      name="CurrEmployerAddress"
+      placeholder="Address"
+    />
+    <label for="CurrEmployerCity">City</label>
+    <input
+      type="text"
+      class="form-control"
+      id="CurrEmployerCity"
+      name="CurrEmployerCity"
+      placeholder="City"
+    />
+    <label for="CurrEmployerState">State</label>
+    <input
+      type="text"
+      class="form-control"
+      id="CurrEmployerState"
+      name="CurrEmployerState"
+      size="2"
+      placeholder="State"
+    />
+    <label for="CurrEmployerZipcode">Zip Code (5 or 9 digits only)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="CurrEmployerZipcode"
+      name="CurrEmployerZipcode"
+      size="10"
+      placeholder="CurrEmployerZipcode"
+    />
+    <label for="CurrEmployerTelNo">Tel. No (10 digits)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="CurrEmployerTelNo"
+      name="CurrEmployerTelNo"
+      placeholder="CurrEmployerTelNo"
+      size="10"
+    />
+  </div>
+  <hr>
+    <div class="form-group">
+    <label for="OtherEmployerNm">Other Employer Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="OtherEmployerNm"
+      name="OtherEmployerNm"
+      placeholder="OtherEmployerNm"
+    />
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="OtherEmployerAddress">Address ( Apt,Name&Number or Street Number&Street name )</label>
+    <input
+      type="text"
+      class="form-control"
+      id="OtherEmployerAddress"
+      name="OtherEmployerAddress"
+      placeholder="OtherEmployerAddress"
+    />
+    <label for="OtherEmployerCity">City</label>
+    <input
+      type="text"
+      class="form-control"
+      id="OtherEmployerCity"
+      name="OtherEmployerCity"
+      placeholder="OtherEmployerCity"
+    />
+    <label for="OtherEmployerState">State</label>
+    <input
+      type="text"
+      class="form-control"
+      id="OtherEmployerState"
+      name="OtherEmployerState"
+      placeholder="OtherEmployerState"
+    />
+    <label for="OtherEmployerZipcode">Zip Code (5 or 9 digits only)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="OtherEmployerZipcode"
+      name="OtherEmployerZipcode"
+      placeholder="OtherEmployerZipcode"
+    />
+    <label for="OtherEmployerTelNo">Tel. No (10 digits)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="OtherEmployerTelNo"
+      name="OtherEmployerTelNo"
+      placeholder="OtherEmployerTelNo"
+    />
+  </div>
+<hr>
+<br />
+  <button type="submit" class="btn btn-primary">Save and Continue..</button>
+</form>
+{% endblock %}
