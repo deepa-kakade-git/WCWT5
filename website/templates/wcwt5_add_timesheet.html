@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}Form WCWT-5 APPLICATION FORM FOR REFUND OF WILMINGTON CITY WAGE TAX{% endblock %} 
+{% block content %}
+  <form method="POST">
+        <input type="hidden" name="taxpayer_info_id" value="{{ taxpayer_info_id }}">
+        <h4>Add Time Entry for WCWT-5 Form System ID: {{ taxpayer_info_id }}      Tax Year : {{ tax_year }} </h3>
+
+     <div class="form-group">
+
+        <label for="time_entry_date">Time Entry Date:</label><br>
+        <input type="date" id="time_entry_date" name="time_entry_date"  min="{{ tax_year }}-01-01" max="{{ tax_year }}-12-31"><br>
+        
+        <label for="time_entry_code">Time Entry Code:</label><br>
+        <select id="time_entry_code" name="time_entry_code" required>
+            <option value="VAC">Vacation</option>
+            <option value="ILL">Sick Day</option>
+            <option value="WFH">Work From Home</option>
+            <option value="WFO">Work from outside of Wilmington</option>
+            <option value="OTH">Other Non Working</option>
+        </select><br>
+        <label for="time_entry_other_desc">Other Description:</label><br>
+        <input type="text" id="time_entry_other_desc" name="time_entry_other_desc"><br>
+        
+  <div class="row">
+   <div class="col">
+      <button id="addTime" name="addTime" type="submit" class="btn btn-primary">Save & Add more</button>
+   </div>
+   <div class="col">
+      <button id="revTime" name="revTime" type="submit" class="btn btn-success">Save & Review All Entries</button>
+   </div>
+  </div>
+  </form>
+{% endblock %}

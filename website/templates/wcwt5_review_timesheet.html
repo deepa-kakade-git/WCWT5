@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}
+    Review Time Entries
+{% endblock %} 
+
+{% block content %}
+    <h1>Timesheets Data for {{ taxpayer_info_id }}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Time Entry Date</th>
+                <th>Time Entry Code</th>
+                <th>Other Description</th>
+                <th>Action</th>  <!-- New column for delete button -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for timesheet in timesheets %}
+                <tr>
+                    <td>{{ timesheet.TimeEntryDate }}</td>
+                    <td>{{ timesheet.TimeEntryCode }}</td>
+                    <td>{{ timesheet.TimeEntryOtherDesc }}</td>
+                    <td>
+                        <form method="POST">
+                            <input type="hidden" name="del_timesheet_id" value="{{ timesheet.TimesheetId }}">
+                            <button id="delTime" name="delTime" type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<form method="POST">
+    <div class="row">
+        <div class="col">
+            <button id="addTime" name="addTime" type="submit" class="btn btn-primary">Add additional Time Entries</button>
+        </div>
+        <div class="col">
+            <button id="conRefund" name="conRefund" type="submit" class="btn btn-success">Continue to Next Step</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
