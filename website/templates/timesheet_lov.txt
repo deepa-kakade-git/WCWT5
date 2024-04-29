@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Add Timesheets{% endblock %}
+{% block content %}
+<form method="POST">
+    <input type="hidden" name="taxpayer_id" value="{{ taxpayer_id }}">
+    <h3>Add Timesheets for Taxpayer ID: {{ taxpayer_id }}</h3>
+    <hr>
+    <h4>Existing Timesheets:</h4>
+    <ul>
+        {% for timesheet in existing_timesheets %}
+        <li>
+            <input type="checkbox" name="timesheets[{{ loop.index0 }}][isDeleted]" value="true">
+            {{ timesheet.TimeEntryDate }} - {{ timesheet.TimeEntryCode }}{% if timesheet.TimeEntryOtherDesc %} ({{ timesheet.TimeEntryOtherDesc }}){% endif %}
+            <input type="hidden" name="timesheets[{{ loop.index0 }}][TimeEntryDate]" value="{{ timesheet.TimeEntryDate }}">
+            <input type="hidden" name="timesheets[{{ loop.index0 }}][TimeEntryCode]" value="{{ timesheet.TimeEntryCode }}">
+            <input type="hidden" name="timesheets[{{ loop.index0 }}][TimeEntryOtherDesc]" value="{{ timesheet.TimeEntryOtherDesc }}">
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <div id="timesheets">
+        <div class="timesheet-entry">
+            <label for="TimeEntryDate">Time Entry Date:</label>
+            <input type="date" name="timesheets[{{ existing_timesheets|length }}][TimeEntryDate]" required>
+            <label for="TimeEntryCode">Time Entry Code:</label>
+            <select name="timesheets[{{ existing_timesheets|length }}][TimeEntryCode]" required>
+                {% for code, desc in time_entry_codes %}
+                <option value="{{ code }}">{{ desc }}</option>
+                {% endfor %}
+            </select>
+            <label for="TimeEntryOtherDesc">Other Description:</label>
+            <input type="text" name="timesheets[{{ existing_timesheets|length }}][TimeEntryOtherDesc]">
+        </div>
+    </div>
+    <button type="button" onclick="addTimesheet()">Add More</button>
+    <br><br>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    let timesheetCount = {{ existing_timesheets|length + 1 }};
+
+    function addTimesheet() {
+        const timesheetsDiv = document.getElementById('timesheets');
+        const newTimesheetDiv = document.createElement('div');
+        newTimesheetDiv.className = 'timesheet-entry';
+
+        newTimesheetDiv.innerHTML = `
+            <label for="TimeEntryDate">Time Entry Date:</label>
+            <input type="date" name="timesheets[${timesheetCount}][TimeEntryDate]" required>
+            <label for="TimeEntryCode">Time Entry Code:</label>
+            <select name="timesheets[${timesheetCount}][TimeEntryCode]" required>
+                {% for code, desc in time_entry_codes %}
+                <option value="{{ code }}">{{ desc }}</option>
+                {% endfor %}
+            </select>
+            <label for="TimeEntryOtherDesc">Other Description:</label>
+            <input type="text" name="timesheets[${timesheetCount}][TimeEntryOtherDesc]">
+        `;
+
+        timesheetsDiv.appendChild(newTimesheetDiv);
+        timesheetCount++;
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+{% block title %}
+    Completed Form WCWT-5 APPLICATION FORM FOR REFUND OF WILMINGTON CITY WAGE TAX
+{% endblock %} 
+
+{% block content %}
+  <h1 align="left"> {{ wcwt5_taxpayer_info.TaxYear }} WCWT-5 </h1>
+  <p class="Text">Form  ( Unique Form ID : {{ wcwt5_taxpayer_info.id}} )</p>
+  <hr>
+  <h3 align="left">SECTION 1 : BACKGROUND INFORMATION</h3>
+
+
+   <table class="table table-sm">
+   <tr>
+     <th>1. Name :</th>
+     <td>
+     {{ wcwt5_taxpayer_info.FirstName }}   
+	&nbsp;   
+     {{ wcwt5_taxpayer_info.MiddleInitial }}   
+	&nbsp;
+     {{ wcwt5_taxpayer_info.LastName }}   
+     </td>
+
+   </tr>
+   <tr>
+     <th>2. Home Address :</th>
+     <td>
+     {{ wcwt5_taxpayer_info.Address }}   
+     </td>
+   </tr>
+    <tr>
+     <th></th>
+     <td>
+     {{ wcwt5_taxpayer_info.City }}   
+	&nbsp;&nbsp;  
+     {{ wcwt5_taxpayer_info.State }}   
+	&nbsp;&nbsp;  
+     {{ wcwt5_taxpayer_info.Zipcode }}   
+	&nbsp;&nbsp;  
+     {{ wcwt5_taxpayer_info.TelNo }}   
+     </td>
+   </tr>
+
+ <tr>
+     <th>2. Present Employer : :</th>
+     <td>
+     {{ wcwt5_taxpayer_info.CurrEmployerNm }}   
+     </td>
+   </tr>
+    <tr>
+     <th></th>
+     <td>
+     {{ wcwt5_taxpayer_info.CurrEmployerCity }}   
+	&nbsp;&nbsp;  
+     {{ wcwt5_taxpayer_info.CurrEmployerState }}   
+	&nbsp;&nbsp;  
+     {{ wcwt5_taxpayer_info.CurrEmployerZipcode }}   
+	&nbsp;&nbsp;  
+     {{ wcwt5_taxpayer_info.CurrEmployerTelNo}}   
+     </td>
+   </tr>
+
+<table class="table table-sm">
+
+
+<hr>
+  <h3 align="left">SECTION 2 : REFUND COMPUTATION</h3>
+
+ <tr>
+     <th>4. Gross Earnings For {{wcwt5_taxpayer_info.TaxYear}} :</th>
+     <td>
+     {{wcwt5_refund_computation.Line4GrossEarnings }}   
+     </td>
+</tr>
+     <th>6. Earnings to allocated :</th>
+     <td>
+     {{wcwt5_refund_computation.Line6EarningstoAllocated }}   
+     </td>
+</tr>
+     <th>7. Allocation Percentage :</th>
+     <td>
+     {{wcwt5_refund_computation.Line7AllocationPrcnt }}   
+     </td>
+</tr>
+     <th>8. Portion of Earnings Non-Taxable :</th>
+     <td>
+     {{wcwt5_refund_computation.Line8NontaxPortionEarnings}}   
+     </td>
+</tr>
+     <th>9.Total Non-Taxable Earnings :</th>
+     <td>
+     {{wcwt5_refund_computation.Line9TotNontaxEarnings }}   
+     </td>
+</tr>
+     <th>10. Earnings Subject to Tax :</th>
+     <td>
+     {{wcwt5_refund_computation.Line10EarningsSubToTax}}   
+     </td>
+</tr>
+
+     <th>11. Tax Calculation :</th>
+     <td>
+	<tr> 
+ 	<th>&nbsp;&nbsp;&nbsp;&nbsp;11a. Tax rate : </th>
+	 <td> {{wcwt5_refund_computation.Line11aTaxRate}}	
+	 <tr>
+	<th>&nbsp;&nbsp;&nbsp;&nbsp;11b.Tax due </th>
+         <td> {{wcwt5_refund_computation.Line11bTaxDue}}	
+         <tr> 
+	<th>&nbsp;&nbsp;&nbsp;&nbsp;11c. Tax Withheld or Paid with Acct. No : </th>
+	 <td> {{wcwt5_refund_computation.Line11cTaxWithheldAmt}}	
+
+      </td>
+</tr>
+
+     <th>12. Refund Due for the applicable period :</th>
+     <td>
+     {{wcwt5_refund_computation.Line12RefundDue}}   
+     </td>
+</tr>
+     <th>13. Net Refund or Amount Due :</th>
+     <td>
+     {{wcwt5_refund_computation.Line13NetRefundOrAmtDue}}   
+     </td>
+</tr>
+</table>
+<hr>
+
+<th>SECTION 2 : Non working days {{wcwt5_taxpayer_info.TaxYear}} </th>
+<table class="table table-sm">
+
+    
+	<tr> 
+ 	<th>&nbsp;&nbsp;&nbsp;&nbsp;Saturdays and Sundays Not Worked: </th>
+	 <td> {{wcwt5_refund_computation.NotWorkedSatSun}}
+	</tr>	
+	 <tr>
+	<th>&nbsp;&nbsp;&nbsp;&nbsp;Holidays </th>
+         <td> {{wcwt5_refund_computation.NotWorkedHolidays}}	
+        </tr> 
+         <tr> 
+	<th>&nbsp;&nbsp;&nbsp;&nbsp;Vacation : </th>
+	 <td> {{wcwt5_refund_computation.NotWorkedVac}}	
+	</tr>
+	<th>&nbsp;&nbsp;&nbsp;&nbsp;Illness : </th>
+	 <td> {{wcwt5_refund_computation.NotWorkedIll}}	
+	</tr>
+	<th>&nbsp;&nbsp;&nbsp;&nbsp;Other : </th>
+	 <td> {{wcwt5_refund_computation.NotWorkedOther}}	
+	</tr>
+
+      </td>
+</tr>
+</table>
+
+<h3>SECTION 2 : Allocation Percenntage Calculation </h3>
+    
+<table class="table table-sm">
+	<tr> 
+ 	<th>&nbsp;&nbsp;&nbsp;&nbsp;7a. Total Number of Days Worked during the year: : </th>
+	 <td> {{wcwt5_refund_computation.Line7aTotalDaysWorked}}
+	</tr>	
+	 <tr>
+	<th>&nbsp;&nbsp;&nbsp;&nbsp;7b.Number of Paid Days actually worked outside Wilmington </th>
+         <td> {{wcwt5_refund_computation.Line7bDaysWorkedOutside}}	
+        </tr> 
+         <tr> 
+	<th>&nbsp;&nbsp;&nbsp;&nbsp;7c. Percentage of Paid Days actually worked outside Wilmington. : </th>
+	 <td> {{wcwt5_refund_computation.Line7cDaysWorkedOutPrcnt}}	
+	</tr>
+      </td>
+</tr>
+</table>
+
+      
+
+</table> 
+<hr>
+
+
+<!--  <p>
+  {{ wcwt5_taxpayer_info }}
+  </p>
+  <p>
+  {{ timesheets}}
+  </p>
+  <p>
+  {{ refund_computation }}
+  </p>
+ <form method="POST">
+  <button type="submit" class="btn btn-primary">Exit Tool</button>
+ </form>
+{% endblock %}
+-->

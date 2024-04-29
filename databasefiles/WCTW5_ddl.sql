@@ -13,20 +13,20 @@ CREATE TABLE wcwt5_taxpayer_info (
     Address VARCHAR(255),
     City VARCHAR(255),
     State VARCHAR(255),
-    Zipcode INT(9),
-    TelNo INT(10),
+    Zipcode VARCHAR(10),
+    TelNo VARCHAR(20),
     CurrEmployerNm VARCHAR(255),
     CurrEmployerAddress VARCHAR(255),
     CurrEmployerCity VARCHAR(255),
     CurrEmployerState VARCHAR(255),
-    CurrEmployerZipcode INT(9),
-    CurrEmployerTelNo INT(10),
+    CurrEmployerZipcode VARCHAR(10),
+    CurrEmployerTelNo VARCHAR(20),
     OtherEmployerNm VARCHAR(255),
     OtherEmployerAddress VARCHAR(255),
     OtherEmployerCity VARCHAR(255),
     OtherEmployerState VARCHAR(255),
-    OtherEmployerZipcode INT(9),
-    OtherEmployerTelNo INT(10)
+    OtherEmployerZipcode VARCHAR(10),
+    OtherEmployerTelNo VARCHAR(20),
 );
 
 
@@ -61,11 +61,12 @@ DROP TABLE IF EXISTS wcwt5_refund_computation;
 CREATE TABLE wcwt5_refund_computation (
     TaxpayerInfo_id INT PRIMARY KEY,
     Line4GrossEarnings DECIMAL(10,2),
+    Line6EarningstoAllocated DECIMAL(10,2),
     Line7AllocationPrcnt DECIMAL(5,2),
     Line8NontaxPortionEarnings DECIMAL(10,2),
     Line9TotNontaxEarnings DECIMAL(10,2),
     Line10EarningsSubToTax DECIMAL(10,2),
-    Line11aTaxRate DECIMAL(6,2),
+    Line11aTaxRate DECIMAL(7,4),
     Line11bTaxDue DECIMAL(10,2),
     Line11cTaxAcctNum VARCHAR(20),
     Line11cTaxWithheldAmt DECIMAL(10,2),
@@ -73,7 +74,14 @@ CREATE TABLE wcwt5_refund_computation (
     Line13NetRefundOrAmtDue DECIMAL(10,2),
     Line7aTotalDaysWorked INT,
     Line7bDaysWorkedOutside INT,
-    Line7cDaysWorkedOutPrcnt INT,
+    Line7cDaysWorkedOutPrcnt DECIMAL(10,2),
+    NotWorkedSatSun INT,
+    NotWorkedHolidays INT,
+    NotWorkedVac INT,
+    NotWorkedIll INT,
+    NotWorkedOther INT,
+    NotWorkedTotal INT
+
     FOREIGN KEY (TaxpayerInfo_id) REFERENCES wcwt5_taxpayer_info(id)
 );
 
@@ -89,3 +97,14 @@ INSERT INTO wcwt5_timesheetentrycode_lov (TimeEntryCode, TimeEntryDesc, TimeEntr
 ('WFO', 'Work from outside of Wilmington', 'WORKING'),
 ('WFW', 'Work from within Wilmington', 'WORKING')
 ;
+
+vac 11
+ill 4 
+oth 2
+Hol 10
+tot : 27
+
+365-233 = 132 - 27 = 105
+
+
+wfh 17 wfo 7 

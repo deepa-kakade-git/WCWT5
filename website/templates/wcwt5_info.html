@@ -10,10 +10,10 @@ content %}
             {% endfor %}
         </select>
   </div>
-  <br />
   <hr>
-  <br />
   <div class="form-group">
+  <div class="row">
+  <div class="col">
     <label for="FirstName">First Name</label>
     <input
       type="text"
@@ -22,16 +22,20 @@ content %}
       name="FirstName"
       placeholder="First name"
     />
+   </div>
+   <div class="col">
     <label for="MiddleInitial">Middle Initial</label>
     <input
       type="text"
-      class="form-control"
+      class="form-control input-sm"
       id="MiddleInitial"
       name="MiddleInitial"
       placeholder="Middle Initial"
       maxlength="1"
       size="1"
     />
+   </div>
+   <div class="col">
     <label for="LastName">Last Name</label>
     <input
       type="text"
@@ -40,6 +44,7 @@ content %}
       name="LastName"
       placeholder="Last Name"
     />
+   </div>
   </div>
   <br>
   <div class="form-group">
@@ -51,6 +56,10 @@ content %}
       name="Address"
       placeholder="Address"
     />
+  </div>
+  <div class="form-group">
+    <div class="row">
+    <div class="col">
     <label for="City">City</label>
     <input
       type="text"
@@ -59,6 +68,8 @@ content %}
       name="City"
       placeholder="City"
     />
+    </div>
+    <div class="col">
     <label for="State">State</label>
     <input
       type="text"
@@ -68,19 +79,25 @@ content %}
       placeholder="State"
       size="2"
     />
+    </div>
+    <div class="col">
     <label for="Zipcode">Zip Code (5 or 9 digits only)</label>
     <input
-      type="number"
+      type="text"
       class="form-control"
       id="Zipcode"
       name="Zipcode"
       placeholder="Zipcode"
       size="10"
     />
+    </div>
+    </div>
+  </div>
+  <div class="form-group">
     <label for="TelNo">Tel. No (10 digits)</label>
     <input
-      type="number"
-      class="form-control"
+      type="text"
+      class="form-control input-sm"
       id="TelNo"
       name="TelNo"
       placeholder="TelNo"
@@ -98,7 +115,6 @@ content %}
       placeholder="Current Employer Name"
     />
   </div>
-  <br>
   <div class="form-group">
     <label for="CurrEmployerAddress">Address ( Apt,Name&Number or Street Number&Street name )</label>
     <input
@@ -108,6 +124,10 @@ content %}
       name="CurrEmployerAddress"
       placeholder="Address"
     />
+   </div>
+  <div class="form-group">
+  <div class="row">
+  <div class="col">
     <label for="CurrEmployerCity">City</label>
     <input
       type="text"
@@ -116,6 +136,8 @@ content %}
       name="CurrEmployerCity"
       placeholder="City"
     />
+  </div>
+  <div class="col">
     <label for="CurrEmployerState">State</label>
     <input
       type="text"
@@ -125,18 +147,24 @@ content %}
       size="2"
       placeholder="State"
     />
+  </div>
+  <div class="col">
     <label for="CurrEmployerZipcode">Zip Code (5 or 9 digits only)</label>
     <input
-      type="number"
+      type="text"
       class="form-control"
       id="CurrEmployerZipcode"
       name="CurrEmployerZipcode"
       size="10"
       placeholder="CurrEmployerZipcode"
     />
+   </div>
+   </div>
+  </div>
+  <div class="form-group">
     <label for="CurrEmployerTelNo">Tel. No (10 digits)</label>
     <input
-      type="number"
+      type="text"
       class="form-control"
       id="CurrEmployerTelNo"
       name="CurrEmployerTelNo"
@@ -155,7 +183,6 @@ content %}
       placeholder="OtherEmployerNm"
     />
   </div>
-  <br>
   <div class="form-group">
     <label for="OtherEmployerAddress">Address ( Apt,Name&Number or Street Number&Street name )</label>
     <input
@@ -165,6 +192,9 @@ content %}
       name="OtherEmployerAddress"
       placeholder="OtherEmployerAddress"
     />
+  <div class="form-group">
+  <div class="row">
+  <div class="col">
     <label for="OtherEmployerCity">City</label>
     <input
       type="text"
@@ -173,6 +203,8 @@ content %}
       name="OtherEmployerCity"
       placeholder="OtherEmployerCity"
     />
+  </div>
+  <div class="col">
     <label for="OtherEmployerState">State</label>
     <input
       type="text"
@@ -181,17 +213,23 @@ content %}
       name="OtherEmployerState"
       placeholder="OtherEmployerState"
     />
+  </div>
+  <div class="col">
     <label for="OtherEmployerZipcode">Zip Code (5 or 9 digits only)</label>
     <input
-      type="number"
+      type="text"
       class="form-control"
       id="OtherEmployerZipcode"
       name="OtherEmployerZipcode"
       placeholder="OtherEmployerZipcode"
     />
+   </div>
+   </div>
+  </div>
+  <div class="form-group">
     <label for="OtherEmployerTelNo">Tel. No (10 digits)</label>
     <input
-      type="number"
+      type="text"
       class="form-control"
       id="OtherEmployerTelNo"
       name="OtherEmployerTelNo"

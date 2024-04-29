@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block title %}Form WCWT-5 APPLICATION FORM FOR REFUND OF WILMINGTON CITY WAGE TAX{% endblock %} {% block
+content %}
+<form method="POST">
+  <h3 align="center">Retrieve Completed WCWT-5 application</h3>
+  <hr>
+  <div class="form-group">
+  <div class="row">
+  <div class="col">
+    <label for="TaxpayerinfoId">Enter the unique WCWT-5 Form Id : </label>
+    <input
+      type="number"
+      class="form-control"
+      id="TaxpayerinfoId"
+      name="TaxpayerinfoId"
+      placeholder="TaxpayerinfoId"
+    />
+   </div>
+   </div>
+  </div>
+<hr>
+<br />
+  <button type="submit" class="btn btn-primary">Retreive WCWT-5 Form</button>
+</form>
+{% endblock %}

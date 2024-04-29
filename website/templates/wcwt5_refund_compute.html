@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}
+    Form WCWT-5 APPLICATION FORM FOR REFUND OF WILMINGTON CITY WAGE TAX
+{% endblock %} 
+
+{% block content %}
+  <h3 align="center">SECTION 2 - Refund Computation Prep</h3>
+  <hr>
+   <h4 align="left">Time Entry Summary for computation. Tax Year - {{ non_work_totals.year }}</h4>
+   <br>
+   <h4 align="left">Non working Day Summary</h4>
+   <table class="table table-striped">
+   <tr>
+     <th>Saturday & Sundays </th>
+     <td>
+         {{ non_work_totals.saturdays_sundays }}
+     </td>
+   </tr>
+   <tr>
+     <th>Holidays</th>
+     <td>
+         {{ non_work_totals.holidays }}
+     </td>
+   </tr>
+   <tr>
+     <th>Vacation Days :</th>
+     <td>
+        {{ non_work_totals.vacation_days }}
+     </td>
+   </tr>
+   <tr>
+     <th>Sick/Illness Days : </th>
+     <td>
+           {{ non_work_totals.illness_days }}
+     </td>
+   </tr>
+   <tr>
+     <th>Other non Working Days :</th>
+     <td>
+         {{ non_work_totals.other_non_working_days }}
+     </td>
+   </tr>
+   <tr>
+     <th>Total Non Working Days : </th>
+     <td>
+         {{ non_work_totals.other_non_working_days + 
+            non_work_totals.saturdays_sundays +
+            non_work_totals.illness_days +
+            non_work_totals.vacation_days +
+            non_work_totals.holidays
+         }}
+     </td>
+   </tr>
+  </table> 
+  <hr>
+  <br>
+
+   <h4 align="left">Form WCWT-5 Allocation Percentage Calculation </h4>
+
+   <table class="table table-striped">
+   <tr>
+     <th>7.a Total Number of Days Worked during the year:</th>
+     <td>
+         {{ 365 -
+            (non_work_totals.other_non_working_days + 
+            non_work_totals.saturdays_sundays +
+            non_work_totals.illness_days +
+            non_work_totals.vacation_days +
+            non_work_totals.holidays)
+         }}
+     </td>
+   </tr>
+   <tr>
+     <th>7.b Number of Paid Days actually worked outside Wilmington :</th>
+     <td>
+         {{ working_days_out_wil }}
+     </td>
+   </tr>
+   <tr>
+     <th>7.c Number of Paid Days actually worked outside Wilmington :</th>
+     <td>
+         {{ working_days_out_wil /
+            (365 -
+            (non_work_totals.other_non_working_days + 
+            non_work_totals.saturdays_sundays +
+            non_work_totals.illness_days +
+            non_work_totals.vacation_days +
+            non_work_totals.holidays))
+          }}
+     </td>
+   </tr></table> 
+
+<form method="POST">
+  <div class="form-group">
+  <div class="row">
+  <div class="col">
+    <label for="Line4GrossEarnings">4. Enter Gross Earnings [ From W2 : Local Wages and taxes for Wilmington City ]</label>
+  </div>
+  <div class="col">
+    <input
+      type="number"
+      class="form-control"
+      id="Line4GrossEarnings"
+      name="Line4GrossEarnings"
+      placeholder="Line4GrossEarnings"
+      required
+    />
+   </div>
+   </div>
+  <div class="row">
+  <div class="col">
+    <label for="Line11cTaxWithheldAmt">4. Enter Tax Amount withheld [ From W2 : Tax witheld for Wilmington City ]</label>
+  </div>
+  <div class="col">
+    <input
+      type="number"
+      class="form-control"
+      id="Line11cTaxWithheldAmt"
+      name="Line11cTaxWithheldAmt"
+      placeholder="Line11cTaxWithheldAmt"
+      required
+    />
+   </div>
+   </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Compute Refund and Finalize Form</button>
+ </form>
+{% endblock %}

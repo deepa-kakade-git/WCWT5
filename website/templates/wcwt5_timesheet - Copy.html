@@ -3,6 +3,18 @@
 <form method="POST">
     <input type="hidden" name="taxpayer_info_id" value="{{ taxpayer_info_id }}">
     <h3>Add Timesheets for Taxpayer ID: {{ taxpayer_info_id }}</h3>
+    <ul>
+        {% for timesheet in existing_timesheets %}
+        <li>
+            <input type="checkbox" name="timesheets[{{ loop.index0 }}][isDeleted]" value="true">
+            {{ timesheet.TimeEntryDate }} - {{ timesheet.TimeEntryCode }}{% if timesheet.TimeEntryOtherDesc %} ({{ timesheet.TimeEntryOtherDesc }}){% endif %}
+            <input type="hidden" name="timesheets[{{ loop.index0 }}][TimeEntryDate]" value="{{ timesheet.TimeEntryDate }}">
+            <input type="hidden" name="timesheets[{{ loop.index0 }}][TimeEntryCode]" value="{{ timesheet.TimeEntryCode }}">
+            <input type="hidden" name="timesheets[{{ loop.index0 }}][TimeEntryOtherDesc]" value="{{ timesheet.TimeEntryOtherDesc }}">
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
     <div id="timesheets">
         <div class="timesheet-entry">
             <label for="TimeEntryDate">Time Entry Date:</label>

@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block title %}Form WCWT-5 APPLICATION FORM FOR REFUND OF WILMINGTON CITY WAGE TAX{% endblock %} 
+{% block content %}
+<h2> Timesheet Entry WCWT=5 Form id : {{ taxpayer_info_id }}</h2>
+<form method="POST">
+    <input type="hidden" name="taxpayer_info_id" value="{{ taxpayer_info_id }}">
+    <h3>Add Timesheets for Taxpayer ID: {{ taxpayer_info_id }}</h3>
+    <ul="list-group list_group_flush" id="ul_timesheets">
+        {% for timesheet in existing_timesheets %}
+        <li class="list-group-item">
+            
+            <label for="TimeEntryDate">Time Entry Date:</label>
+	    <input type="text" readonly class="form-control-plaintext" id="rTimeEntryDate" value="{{ timesheet.TimeEntryDate }}"> 
+            <label for="TimeEntryCode">Time Entry Code:</label>
+            {{ timesheet.TimeEntryCode }}
+            <label for="TimeEntryOtherDesc">Other Description:</label>
+            {{ timesheet.TimeEntryOtherDesc }}
+            <input type="hidden" name="timesheets[{{ loop.index0 }}][TimeEntryDate]" value="{{ timesheet.TimeEntryDate }}">
+            <input type="hidden" name="timesheets[{{ loop.index0 }}][TimeEntryCode]" value="{{ timesheet.TimeEntryCode }}">
+            <input type="hidden" name="timesheets[{{ loop.index0 }}][TimeEntryOtherDesc]" value="{{ timesheet.TimeEntryOtherDesc }}">
+            <label for="isDeleted">Mark for Deletion ?:</label>
+            <input type="checkbox" name="timesheets[{{ loop.index0 }}][isDeleted]" value="true">
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <div id="timesheets">
+        <!-- New timesheet entries will be added here -->
+    </div>
+    <button type="button" class="btn btn-primary" onclick="addTimesheet()">Add More</button>
+    <br><br>
+    <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
+
+<script>
+    let timesheetCount = 1;
+
+    function addTimesheet() {
+        const timesheetsDiv = document.getElementById('timesheets');
+        const newTimesheetDiv = document.createElement('div');
+        newTimesheetDiv.className = 'timesheet-entry';
+
+        newTimesheetDiv.innerHTML = `
+            <label for="TimeEntryDate">Time Entry Date (Tax Year: {{ tax_year }}):</label>
+            <input type="date" name="timesheets[${timesheetCount}][TimeEntryDate]" required min="{{ tax_year }}-01-01" max="{{ tax_year }}-12-31">
+            <label for="TimeEntryCode">Time Entry Code:</label>
+            <input type="text" name="timesheets[${timesheetCount}][TimeEntryCode]" required>
+            <label for="TimeEntryOtherDesc">Other Description:</label>
+            <input type="text" name="timesheets[${timesheetCount}][TimeEntryOtherDesc]">
+            <button type="button" class="close" onclick="removeTimesheet(this)"><span aria-hidden="true">&times;</span></button>
+        `;
+
+        timesheetsDiv.appendChild(newTimesheetDiv);
+        timesheetCount++;
+    }
+
+    function removeTimesheet(button) {
+        // Get the parent div of the clicked button
+        const timesheetDiv = button.parentElement;
+        // Remove the parent div from the timesheets section
+        timesheetDiv.remove();
+    }
+</script>
+
+{% endblock %}
+
